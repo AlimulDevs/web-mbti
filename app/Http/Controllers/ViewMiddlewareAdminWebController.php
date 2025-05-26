@@ -7,6 +7,7 @@ use App\Models\Criteria;
 use App\Models\Major;
 use App\Models\Question;
 use App\Models\School;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class ViewMiddlewareAdminWebController extends Controller
@@ -36,5 +37,11 @@ class ViewMiddlewareAdminWebController extends Controller
     $questions  = Question::get();
 
        return view('admin.question.index', compact('questions'));
+   }
+   public function studentIndex()
+   {
+    $students  = Student::get();
+
+       return view('admin.student.index', compact('students'));
    }
 }

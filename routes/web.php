@@ -27,6 +27,7 @@ Route::get('/home/index', [ViewMiddlewWareWebController::class, 'homeIndex'])->n
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
         Route::get('/criteria/index', [ViewMiddlewareAdminWebController::class, 'criteriaIndex'])->name('criteria.index');
+        Route::get('/student/index', [ViewMiddlewareAdminWebController::class, 'studentIndex'])->name('student.index');
         Route::get('/school/index', [ViewMiddlewareAdminWebController::class, 'schoolIndex'])->name('school.index');
         Route::get('/major/index', [ViewMiddlewareAdminWebController::class, 'majorIndex'])->name('major.index');
         Route::get('/dashboard/index', [ViewMiddlewareAdminWebController::class, 'dashboardIndex'])->name('dashboard.index');

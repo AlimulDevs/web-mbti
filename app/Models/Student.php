@@ -14,4 +14,9 @@ class Student extends Model
     ];
 
     protected $table = 'students'; // Menentukan nama tabel
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

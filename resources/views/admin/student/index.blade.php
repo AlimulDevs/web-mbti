@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Admin Dashboard - Sistem Rekomendasi Jurusan SMK')
+@section('title', 'Admin Dashboard - Sistem Rekomendasi Siswa SMK')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -9,7 +9,7 @@
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Jurusan</h1>
+                    <h1 class="h2">Siswa</h1>
 
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="dropdown">
@@ -37,42 +37,42 @@
                     </div>
                 </div>
 
-                {{-- Tabel Jurusan --}}
+                {{-- Tabel Siswa --}}
                 <div class="table-responsive">
-                    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">
-                        Tambah Jurusan
-                    </button>
+                    {{-- <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">
+                        Tambah Siswa
+                    </button> --}}
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr class="text-center">
                                 <th>#</th>
-                                <th>Nama Sekolah</th>
-                                <th>Nama Jurusan</th>
+                                <th>Nama</th>
+                                <th>Email</th>
                                 <th>Tipe Kepribadian</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($majors as $key => $major)
+                            @foreach($students as $key => $student)
                                 <tr class="text-center">
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $major->school->school_name }}</td>
-                                    <td>{{ $major->name }}</td>
-                                    <td>{{ $major->personality_type }}</td>
+                                    <td>{{ $student->user->name }}</td>
+                                    <td>{{ $student->user->email }}</td>
+                                    <td>{{ $student->dimension_type??'-' }}</td>
 
-                                    <td>
+                                    {{-- <td>
                                         <!-- Tombol Edit -->
-                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{ $major->id }}" data-major-name="{{ $major->name }}" data-personality-type="{{ $major->personality_type }}" data-school-id="{{ $major->school_id }}">
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{ $student->id }}" data-student-name="{{ $student->name }}" data-personality-type="{{ $student->personality_type }}" data-school-id="{{ $student->school_id }}">
                                             Edit
                                         </button>
 
                                         <!-- Tombol Hapus -->
-                                        <form action="/admin/major/delete/{{ $major->id }}" method="POST" style="display:inline;">
+                                        <form action="/admin/student/delete/{{ $student->id }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
@@ -84,26 +84,18 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel">Edit Jurusan</h5>
+                                <h5 class="modal-title" id="editModalLabel">Edit Siswa</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="/admin/major/update" method="POST">
+                                <form action="/admin/student/update" method="POST">
                                     @csrf
-                                    <input type="hidden" id="major_id" name="id">
+                                    <input type="hidden" id="student_id" name="id">
+
+
 
                                     <div class="mb-3">
-                                        <label for="school_id" class="form-label">Nama Sekolah</label>
-                                        <select class="form-control" id="school_id" name="school_id" required>
-                                            <option value="">-- Pilih Sekolah --</option>
-                                            @foreach($schools as $school)
-                                                <option value="{{ $school->id }}">{{ $school->school_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Nama Jurusan</label>
+                                        <label for="name" class="form-label">Nama Siswa</label>
                                         <input type="text" class="form-control" id="name" name="name" required>
                                     </div>
 
@@ -132,24 +124,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">Tambah Jurusan</h5>
+                    <h5 class="modal-title" id="addModalLabel">Tambah Siswa</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/admin/major/create" method="POST">
+                    <form action="/admin/student/create" method="POST">
                         @csrf
 
+
                         <div class="mb-3">
-                            <label for="school_id" class="form-label">Nama Sekolah</label>
-                            <select class="form-control" id="school_id" name="school_id" required>
-                                <option value="">-- Pilih Sekolah --</option>
-                                @foreach($schools as $school)
-                                    <option value="{{ $school->id }}">{{ $school->school_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nama Jurusan</label>
+                            <label for="name" class="form-label">Nama Siswa</label>
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="mb-3">
@@ -159,7 +143,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Simpan Jurusan</button>
+                            <button type="submit" class="btn btn-primary">Simpan Siswa</button>
                         </div>
                     </form>
                 </div>
@@ -174,11 +158,11 @@
         editModal.addEventListener('show.bs.modal', function (event) {
             var button = event.relatedTarget
             var id = button.getAttribute('data-id')
-            var name = button.getAttribute('data-major-name')
+            var name = button.getAttribute('data-student-name')
             var personality_type = button.getAttribute('data-personality-type')
             var school_id = button.getAttribute('data-school-id')
 
-            var modalId = editModal.querySelector('#major_id')
+            var modalId = editModal.querySelector('#student_id')
             var modalName = editModal.querySelector('#name')
             var modalPersonalityType = editModal.querySelector('#personality_type')
             var modalSchoolId = editModal.querySelector('#school_id')

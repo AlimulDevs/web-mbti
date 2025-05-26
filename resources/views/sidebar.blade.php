@@ -55,14 +55,21 @@
             <li class="nav-item">
                 <a class="nav-link {{(request()->is('admin/criteria/index')?'active':'')}}"
                     href="/admin/criteria/index">
-                    <i class="bi bi-question-circle me-2"></i>
+                    <i class="bi bi-list me-2"></i>
                     Kriteria
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{(request()->is('admin/student/index')?'active':'')}}"
+                    href="/admin/student/index">
+                    <i class="bi bi-person me-2"></i>
+                    Siswa
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{(request()->is('admin/school/index')?'active':'')}}"
                     href="/admin/school/index">
-                    <i class="bi bi-question-circle me-2"></i>
+                    <i class="bi bi-building me-2"></i>
                     Sekolah
                 </a>
             </li>
