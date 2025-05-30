@@ -76,7 +76,7 @@
             <li class="nav-item">
                 <a class="nav-link {{(request()->is('admin/major/index')?'active':'')}}"
                     href="/admin/major/index">
-                    <i class="bi bi-building me-2"></i>
+                    <i class="bi bi-person-lines-fill me-2"></i>
                     Jurusan
                 </a>
             </li>
@@ -88,13 +88,7 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link"
-                    href="#">
-                    <i class="bi bi-pie-chart me-2"></i>
-                    Tipe MBTI
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/profiles*') ? 'active' : '' }}"
                     href="#">
