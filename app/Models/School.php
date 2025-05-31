@@ -14,4 +14,8 @@ class School extends Model
     {
         return $this->hasMany(SchoolCriteria::class);
     }
+
+    public function majors(){
+        return $this->hasMany(Major::class);
+    }
 }

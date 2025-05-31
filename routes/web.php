@@ -12,9 +12,7 @@ use App\Http\Controllers\ViewMiddlewWareWebController;
 use App\Http\Controllers\ViewWebController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.welcome');
-});
+Route::get('/', [ViewWebController::class, 'homeIndex']);
 
 
 Route::post('/register', [AuthWebController::class, 'register'])->name('register');
@@ -34,6 +32,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/dashboard/index', [ViewMiddlewareAdminWebController::class, 'dashboardIndex'])->name('dashboard.index');
         Route::get('/question/index', [ViewMiddlewareAdminWebController::class, 'questionIndex'])->name('dashboard.index');
         Route::get('/profile-matching/index', [ViewMiddlewareAdminWebController::class, 'profileMatchingIndex'])->name('profile-matching.index');
+        Route::get('/test-result/index', [ViewMiddlewareAdminWebController::class, 'testResultIndex'])->name('test-result.index');
 
 
 

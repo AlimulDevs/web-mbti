@@ -54,4 +54,13 @@ class ViewMiddlewareAdminWebController extends Controller
 
        return view('admin.profile-matching.index', compact('schools', "criterias"));
    }
+   public function testResultIndex()
+   {
+    $school_criteria = SchoolCriteria::get();
+
+    $schools  = School::get();
+    $criterias = Criteria::get();
+
+       return view('admin.test-result.index', compact('schools', "criterias"));
+   }
 }

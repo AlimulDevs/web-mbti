@@ -97,10 +97,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin/tests*') ? 'active' : '' }}"
-                    href="#">
+                <a class="nav-link {{ Request::is('admin/test-result/index') ? 'active' : '' }}"
+                    href="/admin/test-result/index">
                     <i class="bi bi-clipboard-data me-2"></i>
-                    Hasil Tes
+                    Hasil Tes & Perhitungan
                 </a>
             </li>
             <li class="nav-item">

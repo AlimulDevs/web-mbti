@@ -33,7 +33,9 @@
             </tbody>
         </table>
 
-
+        <p>Rekomendasi  dari kami yaitu <b>{{ $get_school_and_major_recom["school_name"] }}</b> jurusan @foreach ($get_school_and_major_recom["majors"] as $index =>$major)
+            <b>{{ $major["name"] }}</b>,
+        @endforeach</p>
         </div>
         <div class="card-footer bg-light">
             <div class="small text-muted">

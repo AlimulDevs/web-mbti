@@ -13,9 +13,16 @@
             <p class="lead mb-5">Temukan jurusan SMK yang paling sesuai dengan kepribadian dan potensi dirimu
                 <br>berdasarkan pendekatan ilmiah yang teruji!</p>
             <div class="d-flex justify-content-center gap-3">
+                @if ($is_test == false)
                 <a href="{{ route('test-mbti.index') }}" class="btn btn-primary btn-lg px-4 py-2">
                     <i class="fas fa-clipboard-list me-2"></i>Mulai Tes MBTI
                 </a>
+                @else
+                <a href="{{ route('test-result.index') }}" class="btn btn-primary btn-lg px-4 py-2">
+                    <i class="fas fa-clipboard-list me-2"></i>Lihat Hasil Test MBTI
+                </a>
+                @endif
+
                 <a href="#metode" class="btn btn-outline-light btn-lg px-4 py-2">
                     <i class="fas fa-info-circle me-2"></i>Pelajari Metode
                 </a>

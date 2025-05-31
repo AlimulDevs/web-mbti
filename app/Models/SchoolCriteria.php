@@ -41,6 +41,8 @@ class SchoolCriteria extends Model
                 break;
             case 2:
                 $mapping_gap = 4.5;
+
+                break;
             case 3:
                 $mapping_gap = 3.5;
                 break;

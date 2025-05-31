@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Major;
 use App\Models\Question;
+use App\Models\School;
+use App\Models\SchoolCriteria;
+use App\Models\SchoolRecomStudent;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -128,17 +131,48 @@ class ViewMiddlewWareWebController extends Controller
         $student->save();
 
         return redirect("/")->with("success", "berhasil melakukan test mbti");
-
     }
 
-public function testResultIndex(){
-    $user_id = session()->get("id");
-    $student = Student::where('user_id', $user_id)->first();
-    $majors = Major::where('personality_type', $student->dimension_type)->get();
-    return view('frontend.testResult', compact('student', 'majors'));
-}
+    public function testResultIndex()
+    {
+        if (session()->get("remember_token") == null) {
+            return redirect("/login/index");
+        }
 
+        $user_id = session()->get("id");
+        $student = Student::where('user_id', $user_id)->first();
+        $majors = Major::where('personality_type', $student->dimension_type)->with(['school'])->get();
 
+        SchoolRecomStudent::where('student_id', $student->id)->delete();
 
+        foreach ($majors as $major) {
+            $check = SchoolRecomStudent::where('student_id', $student->id)->where('school_id', $major->school_id)->first();
+            if ($check) {
+                continue;
+            }
+            $school_criterias = SchoolCriteria::where('school_id', $major->school_id)->with(['criteria'])->get();
 
+            $value = 0;
+            foreach ($school_criterias as $school_criteria) {
+                $count = $school_criteria["gap_mapping"] * $school_criteria["criteria"]["value"];
+                $value = $value + $count;
+            }
+
+            SchoolRecomStudent::create([
+                'student_id' => $student->id,
+                'school_id' => $major->school_id,
+                'value' => $value
+            ]);
+        }
+        $get_recomended = SchoolRecomStudent::where("student_id", $student["id"])
+        ->orderBy("value", "desc")->first();
+
+        $get_school_and_major_recom = School::where("id", $get_recomended["school_id"])
+        ->with(["majors" => function ($query) use ($student){
+            $query->where("personality_type", $student["dimension_type"]);
+        }])
+        ->first();
+
+        return view('frontend.testResult', compact('student', 'majors', 'get_school_and_major_recom'));
+    }
 }
