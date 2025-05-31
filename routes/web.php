@@ -5,6 +5,7 @@ use App\Http\Controllers\CriteriaWebController;
 use App\Http\Controllers\DashboardWebController;
 use App\Http\Controllers\MajorWebController;
 use App\Http\Controllers\QuestionWebController;
+use App\Http\Controllers\SchoolCriteriaWebController;
 use App\Http\Controllers\SchoolWebController;
 use App\Http\Controllers\ViewMiddlewareAdminWebController;
 use App\Http\Controllers\ViewMiddlewWareWebController;
@@ -32,6 +33,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/major/index', [ViewMiddlewareAdminWebController::class, 'majorIndex'])->name('major.index');
         Route::get('/dashboard/index', [ViewMiddlewareAdminWebController::class, 'dashboardIndex'])->name('dashboard.index');
         Route::get('/question/index', [ViewMiddlewareAdminWebController::class, 'questionIndex'])->name('dashboard.index');
+        Route::get('/profile-matching/index', [ViewMiddlewareAdminWebController::class, 'profileMatchingIndex'])->name('profile-matching.index');
 
 
 
@@ -63,6 +65,14 @@ Route::prefix('admin')->group(function () {
                 Route::delete('/delete/{id}', [QuestionWebController::class, 'delete'])->name('question.delete');
             });
         });
+
+        Route::prefix('school-criteria')->group(function () {
+            Route::name('school-criteria.')->group(function () {
+
+                Route::post('/update', [SchoolCriteriaWebController::class, 'update'])->name('update');
+
+            });
+        });
     });
 });
 
@@ -70,4 +80,5 @@ Route::prefix('admin')->group(function () {
 Route::get('/question/save', [ViewMiddlewWareWebController::class, 'questionSave'])->name('question.save.index');
 
 Route::get('/test-mbti/index', [ViewMiddlewWareWebController::class, 'testMbtiIndex'])->name('test-mbti.index');
+Route::get('/test-result/index', [ViewMiddlewWareWebController::class, 'testResultIndex'])->name('test-result.index');
 

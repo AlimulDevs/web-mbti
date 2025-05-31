@@ -10,7 +10,8 @@ class Student extends Model
         'school_name',
         'user_id',
         'class_name',
-        'criteria'
+        'criteria',
+        'dimension_type'
     ];
 
     protected $table = 'students'; // Menentukan nama tabel

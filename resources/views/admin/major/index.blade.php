@@ -109,7 +109,25 @@
 
                                     <div class="mb-3">
                                         <label for="personality_type" class="form-label">Tipe Kepribadian</label>
-                                        <input type="text" class="form-control" id="personality_type" name="personality_type" required>
+
+                                        <select name="personality_type" id="personality_type" class="form-control" required>
+                                            <option value="{{ $major->personality_type }}">-- {{ $major->personality_type }} --</option>
+                                            <option value="INTJ">INTJ - The Architect</option>
+                                            <option value="INFP">INFP - The Mediator</option>
+                                            <option value="INFJ">INFJ - The Advocate</option>
+                                            <option value="ISFP">ISFP - The Adventurer</option>
+                                            <option value="ISFJ">ISFJ - The Defender</option>
+                                            <option value="ISTP">ISTP - The Virtuoso</option>
+                                            <option value="ISTJ">ISTJ - The Logistician</option>
+                                            <option value="ENFP">ENFP - The Campaigner</option>
+                                            <option value="ENFJ">ENFJ - The Protagonist</option>
+                                            <option value="ENTP">ENTP - The Debater</option>
+                                            <option value="ENTJ">ENTJ - The Commander</option>
+                                            <option value="ESFP">ESFP - The Entertainer</option>
+                                            <option value="ESFJ">ESFJ - The Consul</option>
+                                            <option value="ESTP">ESTP - The Entrepreneur</option>
+                                            <option value="ESTJ">ESTJ - The Executive</option>
+                                        </select>
                                     </div>
 
                                     <div class="modal-footer">
@@ -154,7 +172,24 @@
                         </div>
                         <div class="mb-3">
                             <label for="personality_type" class="form-label">Tipe Kepribadian</label>
-                            <input type="text" class="form-control" id="personality_type" name="personality_type" required>
+                        <select name="personality_type" id="personality_type" class="form-control" required>
+                            <option value="">-- Pilih Tipe Kepribadian --</option>
+                            <option value="INTJ">INTJ - The Architect</option>
+                            <option value="INFP">INFP - The Mediator</option>
+                            <option value="INFJ">INFJ - The Advocate</option>
+                            <option value="ISFP">ISFP - The Adventurer</option>
+                            <option value="ISFJ">ISFJ - The Defender</option>
+                            <option value="ISTP">ISTP - The Virtuoso</option>
+                            <option value="ISTJ">ISTJ - The Logistician</option>
+                            <option value="ENFP">ENFP - The Campaigner</option>
+                            <option value="ENFJ">ENFJ - The Protagonist</option>
+                            <option value="ENTP">ENTP - The Debater</option>
+                            <option value="ENTJ">ENTJ - The Commander</option>
+                            <option value="ESFP">ESFP - The Entertainer</option>
+                            <option value="ESFJ">ESFJ - The Consul</option>
+                            <option value="ESTP">ESTP - The Entrepreneur</option>
+                            <option value="ESTJ">ESTJ - The Executive</option>
+                        </select>
                         </div>
 
                         <div class="modal-footer">

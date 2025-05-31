@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Criteria;
 use App\Models\School;
+use App\Models\SchoolCriteria;
 use Illuminate\Http\Request;
 
 class SchoolWebController extends Controller
@@ -18,7 +20,17 @@ class SchoolWebController extends Controller
        ]);
 
        // Simpan data
-       School::create($validatedData);
+     $school =   School::create($validatedData);
+
+     $criterias = Criteria::get();
+
+     foreach ($criterias as $criteria) {
+         SchoolCriteria::create([
+             'criteria_id' => $criteria->id,
+             'school_id' => $school->id,
+             'value' => 0
+         ]);
+     }
 
        // Redirect ke halaman index setelah menyimpan
        return redirect('/admin/school/index')->with('success', 'sekolah berhasil ditambahkan');

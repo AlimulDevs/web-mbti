@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Major;
 use App\Models\Question;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -130,7 +131,12 @@ class ViewMiddlewWareWebController extends Controller
 
     }
 
-
+public function testResultIndex(){
+    $user_id = session()->get("id");
+    $student = Student::where('user_id', $user_id)->first();
+    $majors = Major::where('personality_type', $student->dimension_type)->get();
+    return view('frontend.testResult', compact('student', 'majors'));
+}
 
 
 

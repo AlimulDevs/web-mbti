@@ -7,6 +7,7 @@ use App\Models\Criteria;
 use App\Models\Major;
 use App\Models\Question;
 use App\Models\School;
+use App\Models\SchoolCriteria;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -43,5 +44,14 @@ class ViewMiddlewareAdminWebController extends Controller
     $students  = Student::get();
 
        return view('admin.student.index', compact('students'));
+   }
+   public function profileMatchingIndex()
+   {
+    $school_criteria = SchoolCriteria::get();
+
+    $schools  = School::get();
+    $criterias = Criteria::get();
+
+       return view('admin.profile-matching.index', compact('schools', "criterias"));
    }
 }

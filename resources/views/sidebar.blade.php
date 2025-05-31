@@ -90,8 +90,8 @@
 
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin/profiles*') ? 'active' : '' }}"
-                    href="#">
+                <a class="nav-link {{ Request::is('admin/profile-matching/index') ? 'active' : '' }}"
+                    href="/admin/profile-matching/index">
                     <i class="bi bi-sliders me-2"></i>
                     Profil Matching
                 </a>
