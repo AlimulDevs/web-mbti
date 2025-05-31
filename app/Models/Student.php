@@ -20,4 +20,9 @@ class Student extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function school_recom_students()
+    {
+        return $this->hasMany(SchoolRecomStudent::class);
+    }
 }

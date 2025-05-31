@@ -33,6 +33,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/question/index', [ViewMiddlewareAdminWebController::class, 'questionIndex'])->name('dashboard.index');
         Route::get('/profile-matching/index', [ViewMiddlewareAdminWebController::class, 'profileMatchingIndex'])->name('profile-matching.index');
         Route::get('/test-result/index', [ViewMiddlewareAdminWebController::class, 'testResultIndex'])->name('test-result.index');
+        Route::get('/test-result/detail/index/{id}', [ViewMiddlewareAdminWebController::class, 'testResultDetailIndex'])->name('test-result.detail.index');
 
 
 

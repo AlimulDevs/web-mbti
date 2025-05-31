@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin/test-result/index') ? 'active' : '' }}"
+                <a class="nav-link {{ Request::is('admin/test-result/*') ? 'active' : '' }}"
                     href="/admin/test-result/index">
                     <i class="bi bi-clipboard-data me-2"></i>
                     Hasil Tes & Perhitungan
