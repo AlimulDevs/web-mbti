@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <a href="#" class="text-white">Lihat Detail <i class="bi bi-arrow-right"></i></a>
+                                    <a href="/admin/student/index" class="text-white">Lihat Detail <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div>
-                                        <h6 class="card-title">Total Tes</h6>
+                                        <h6 class="card-title">Total Sekolah</h6>
                                         <h2 class="mb-0">132</h2>
                                     </div>
                                     <div class="icon-shape rounded-circle bg-white text-success">
