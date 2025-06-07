@@ -18,7 +18,10 @@ class ViewMiddlewareAdminWebController extends Controller
     public function dashboardIndex()
     {
         $students = Student::count();
-        return view('admin.dashboard');
+        $schools = School::count();
+        $criterias = Criteria::count();
+        $questions = Question::count();
+        return view('admin.dashboard' , compact('students', 'schools', 'criterias', 'questions'));
     }
     public function criteriaIndex()
     {

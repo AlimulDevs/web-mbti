@@ -43,7 +43,7 @@
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div>
                                         <h6 class="card-title">Total Siswa</h6>
-                                        <h2 class="mb-0">245</h2>
+                                        <h2 class="mb-0">{{ $students }}</h2>
                                     </div>
                                     <div class="icon-shape rounded-circle bg-white text-primary">
                                         <i class="bi bi-people-fill"></i>
@@ -62,14 +62,14 @@
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div>
                                         <h6 class="card-title">Total Sekolah</h6>
-                                        <h2 class="mb-0">132</h2>
+                                        <h2 class="mb-0">{{ $schools }}</h2>
                                     </div>
                                     <div class="icon-shape rounded-circle bg-white text-success">
                                         <i class="bi bi-file-earmark-text"></i>
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <a href="#" class="text-white">Lihat Detail <i class="bi bi-arrow-right"></i></a>
+                                    <a href="/admin/school/index" class="text-white">Lihat Detail <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -80,15 +80,15 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div>
-                                        <h6 class="card-title">Total Jurusan</h6>
-                                        <h2 class="mb-0">9</h2>
+                                        <h6 class="card-title">Total Kriteria</h6>
+                                        <h2 class="mb-0">{{ $criterias }}</h2>
                                     </div>
                                     <div class="icon-shape rounded-circle bg-white text-info">
                                         <i class="bi bi-building"></i>
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <a href="#" class="text-white">Lihat Detail <i class="bi bi-arrow-right"></i></a>
+                                    <a href="/admin/criteria/index" class="text-white">Lihat Detail <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -99,15 +99,15 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div>
-                                        <h6 class="card-title">Tipe MBTI</h6>
-                                        <h2 class="mb-0">16</h2>
+                                        <h6 class="card-title">Jumlah Soal MBTI</h6>
+                                        <h2 class="mb-0">{{ $questions }}</h2>
                                     </div>
                                     <div class="icon-shape rounded-circle bg-white text-warning">
                                         <i class="bi bi-bar-chart"></i>
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <a href="#" class="text-white">Lihat Detail <i class="bi bi-arrow-right"></i></a>
+                                    <a href="/admin/question/index" class="text-white">Lihat Detail <i class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>

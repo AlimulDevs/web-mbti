@@ -23,8 +23,6 @@ class DatabaseSeeder extends Seeder
             AnswerSeeder::class,
             MbtiResultSeeder::class,
             MajorsTableSeeder::class,
-            MajorCharacteristicSeeder::class,
-            StudentProfileSeeder::class,
             ProfileMatchingResultSeeder::class,
             FeedbackSeeder::class,
             CriteriasTableSeeder::class,
