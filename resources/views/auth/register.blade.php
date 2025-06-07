@@ -115,10 +115,6 @@
                                             <select class="form-select" id="grade" name="class_name">
                                                 <option value="" selected>Pilih kelas</option>
                                                 <option value="9">Kelas 9 SMP</option>
-                                                <option value="10">Kelas 10 SMA/SMK</option>
-                                                <option value="11">Kelas 11 SMA/SMK</option>
-                                                <option value="12">Kelas 12 SMA/SMK</option>
-                                                <option value="lainnya">Lainnya</option>
                                             </select>
                                         </div>
                                     </div>

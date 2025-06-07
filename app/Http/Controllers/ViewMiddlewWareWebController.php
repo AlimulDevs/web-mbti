@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Criteria;
+use App\Models\CriteriaUser;
 use App\Models\Major;
 use App\Models\Question;
 use App\Models\School;
 use App\Models\SchoolCriteria;
+use App\Models\SchoolCriteriaUser;
 use App\Models\SchoolRecomStudent;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -133,6 +136,16 @@ class ViewMiddlewWareWebController extends Controller
         return redirect("/")->with("success", "berhasil melakukan test mbti");
     }
 
+    public function updateCriteriaIndex()
+    {
+        if (session()->get("remember_token") == null) {
+            return redirect("/login/index");
+        }
+
+        $criteria_users = CriteriaUser::where("user_id", session()->get("id"))->get();
+        return view('frontend.updatecriteria', compact('criteria_users'));
+    }
+
     public function testResultIndex()
     {
         if (session()->get("remember_token") == null) {
@@ -140,7 +153,7 @@ class ViewMiddlewWareWebController extends Controller
         }
 
         $user_id = session()->get("id");
-        $student = Student::where('user_id', $user_id)->first();
+        $student = Student::where('user_id', $user_id)->with(["school_recom_students", "user"])->first();
         $majors = Major::where('personality_type', $student->dimension_type)->with(['school'])->get();
 
         SchoolRecomStudent::where('student_id', $student->id)->delete();
@@ -150,11 +163,13 @@ class ViewMiddlewWareWebController extends Controller
             if ($check) {
                 continue;
             }
-            $school_criterias = SchoolCriteria::where('school_id', $major->school_id)->with(['criteria'])->get();
+            $school_criteria_users = SchoolCriteriaUser::where('school_id', $major->school_id)
+            ->where('user_id', $student->user_id)
+            ->with(['criteria_user'])->get();
 
             $value = 0;
-            foreach ($school_criterias as $school_criteria) {
-                $count = $school_criteria["gap_mapping"] * $school_criteria["criteria"]["value"];
+            foreach ($school_criteria_users as $school_criteria) {
+                $count = $school_criteria["gap_mapping"] * $school_criteria["criteria_user"]["value"];
                 $value = $value + $count;
             }
 
@@ -173,6 +188,28 @@ class ViewMiddlewWareWebController extends Controller
         }])
         ->first();
 
-        return view('frontend.testResult', compact('student', 'majors', 'get_school_and_major_recom'));
+
+// tambahan
+
+$data_id_school = [];
+
+foreach ($student["school_recom_students"] as $school_recom_student) {
+    $data_id_school[] = $school_recom_student["school_id"];
+}
+
+$schools  = School::whereIn("id", $data_id_school)
+->with(['school_criteria_users' => function ($query) use ($student){
+    $query->where("user_id", $student["user_id"]);
+}])
+->get();
+$criteria_users = CriteriaUser::where("user_id", $student["user_id"])->get();
+// $criterias = CriteriaUser::where("user_id", $student["user_id"])->get();
+
+$school_recom = SchoolRecomStudent::where("student_id", $student["id"])->orderBy("value", "desc")->with(["school"])->get();
+
+
+
+
+        return view('frontend.testResult', compact('student', 'majors', 'get_school_and_major_recom', "schools", "criteria_users", "school_recom"));
     }
 }

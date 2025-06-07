@@ -6,11 +6,13 @@
             <!-- Sidebar -->
             @include('sidebar')
 
+
+
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Hasil Tes & Perhitungan</h1>
+                    <h1 class="h2">Kriteria Siswa</h1>
                     <!-- Dropdown for user profile -->
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="dropdown">
@@ -45,11 +47,44 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
                         <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Kriteria</th>
+                                <th>Kode</th>
+                                <th>Profile</th>
+                                <th>Nilai Bobot</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($criteria_users as $key => $criteria_user)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $criteria_user->criteria->name }}</td>
+                                    <td>{{ $criteria_user->criteria->code }}</td>
+                                    <td>{{ $criteria_user->profile }}</td>
+                                    <td>{{ $criteria_user->value }}</td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+            </main>
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+
+
+                {{-- Tabel Sekolah --}}
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
                             <tr class="text-center">
                                 <th>#</th>
                                 <th>Nama Sekolah</th>
-                                @foreach ($criterias as $criteria)
-                                    <th>{{ $criteria->name }}</th>
+                                @foreach ($criteria_users as $criteria_user)
+                                    <th>{{ $criteria_user->criteria->name }}</th>
                                 @endforeach
 
                             </tr>
@@ -59,8 +94,8 @@
                                 <tr class="text-center">
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $school->school_name }}</td>
-                                    @foreach ($school->school_criterias as $school_criteria)
-                                        <td>{{ $school_criteria->value }}</td>
+                                    @foreach ($school->school_criteria_users as $school_criteria_user)
+                                        <td>{{ $school_criteria_user->value }}</td>
                                     @endforeach
 
                                 </tr>
@@ -69,10 +104,8 @@
                     </table>
                 </div>
 
-
-
             </main>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Menghitung Nilai GAP antara profile</h1>
@@ -87,8 +120,8 @@
                             <tr class="text-center">
                                 <th>#</th>
                                 <th>Nama Sekolah</th>
-                                @foreach ($criterias as $criteria)
-                                    <th>{{ $criteria->name }}</th>
+                                @foreach ($criteria_users as $criteria_user)
+                                    <th>{{ $criteria_user->criteria->name }}</th>
                                 @endforeach
 
                             </tr>
@@ -98,8 +131,8 @@
                                 <tr class="text-center">
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $school->school_name }}</td>
-                                    @foreach ($school->school_criterias as $school_criteria)
-                                        <td>{{ $school_criteria['gap'] }}</td>
+                                    @foreach ($school->school_criteria_users as $school_criteria_user)
+                                        <td>{{ $school_criteria_user['gap'] }}</td>
                                     @endforeach
 
                                 </tr>
@@ -125,8 +158,8 @@
                             <tr class="text-center">
                                 <th>#</th>
                                 <th>Nama Sekolah</th>
-                                @foreach ($criterias as $criteria)
-                                    <th>{{ $criteria->name }}</th>
+                                @foreach ($criteria_users as $criteria_user)
+                                    <th>{{ $criteria_user->criteria->name }}</th>
                                 @endforeach
 
                             </tr>
@@ -136,8 +169,8 @@
                                 <tr class="text-center">
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $school->school_name }}</td>
-                                    @foreach ($school->school_criterias as $school_criteria)
-                                        <td>{{ $school_criteria['gap_mapping'] }}</td>
+                                    @foreach ($school->school_criteria_users as $school_criteria_user)
+                                        <td>{{ $school_criteria_user['gap_mapping'] }}</td>
                                     @endforeach
 
                                 </tr>

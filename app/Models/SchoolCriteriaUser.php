@@ -4,15 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SchoolCriteria extends Model
+class SchoolCriteriaUser extends Model
 {
     protected $fillable = [
         'school_id',
-        'criteria_id',
+        'user_id',
+        'criteria_user_id',
+        'school_criteria_id',
         'value'
     ];
 
-    protected $table = 'school_criterias'; // Menentukan nama tabel
+    protected $table = 'school_criteria_users'; // Menentukan nama tabel
 
     protected $appends = [
         'gap',
@@ -20,24 +22,31 @@ class SchoolCriteria extends Model
 
     ];
 
-    public function criteria()
+    public function criteria_user()
     {
-        return $this->belongsTo(Criteria::class);
+        return $this->belongsTo(CriteriaUser::class);
+    }
+
+    public function school_criteria()
+    {
+        return $this->belongsTo(SchoolCriteria::class);
     }
 
     public function getGapAttribute()
     {
 
-        $criteria = Criteria::find($this->criteria_id);
-        return $this->value - $criteria->profile;
+        $criteria_user = CriteriaUser::where('id', $this->criteria_user_id)->first();
+
+        return $this->value - $criteria_user->profile;
     }
 
 
 
     public function getGapMappingAttribute()
     {
-        $criteria = Criteria::find($this->criteria_id);
-        $gap = $this->value - $criteria->profile;
+        $criteria_user = CriteriaUser::find($this->criteria_user_id);
+
+        $gap = $this->value - $criteria_user->profile;
         $mapping_gap  = 0;
 
         switch ($gap) {

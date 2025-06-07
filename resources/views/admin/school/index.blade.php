@@ -39,15 +39,15 @@
 
                 {{-- Tabel Sekolah --}}
                 <div class="table-responsive">
-                    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">
+                    {{-- <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">
                         Tambah Sekolah
-                    </button>
+                    </button> --}}
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr class="text-center">
                                 <th>#</th>
                                 <th>Nama Sekolah</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $school->school_name }}</td>
 
-                                    <td>
+                                    {{-- <td>
                                         <!-- Tombol Edit -->
                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{ $school->id }}" data-school-name="{{ $school->school_name }}">
                                             Edit
@@ -68,7 +68,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

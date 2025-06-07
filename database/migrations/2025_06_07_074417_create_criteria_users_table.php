@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('major_characteristics', function (Blueprint $table) {
+        Schema::create('criteria_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('major_id')->constrained('majors')->onDelete('cascade');
-            $table->string('indicator'); // Contoh: logika, kreativitas, komunikasi
-            $table->integer('weight'); // Bobot pentingnya
+            $table->bigInteger('user_id')->index()->nullable();
+            $table->bigInteger("criteria_id")->index()->nullable();
+            $table->string("code")->nullable();
+            $table->integer("profile",)->default(0);
+            $table->string("value", 10,2)->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('major_characteristics');
+        Schema::dropIfExists('criteria_users');
     }
 };

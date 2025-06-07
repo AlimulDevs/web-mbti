@@ -15,6 +15,11 @@ class School extends Model
         return $this->hasMany(SchoolCriteria::class);
     }
 
+    public function school_criteria_users()
+    {
+        return $this->hasMany(SchoolCriteriaUser::class);
+    }
+
     public function majors(){
         return $this->hasMany(Major::class);
     }

@@ -35,10 +35,7 @@ class User extends Authenticatable
         return $this->hasOne(MbtiResult::class);
     }
 
-    public function profile()
-    {
-        return $this->hasMany(StudentProfile::class);
-    }
+
 
     public function feedbacks()
     {

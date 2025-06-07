@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
             <span class="bg-white text-primary rounded-circle p-2 d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
                 <i class="fas fa-graduation-cap"></i>
             </span>
@@ -32,6 +32,14 @@
                         <i class="fas fa-book me-1"></i> Jurusan
                     </a>
                 </li>
+                @if (session('remember_token') != null)
+                <li class="nav-item">
+                    <a class="nav-link fw-medium px-3" href="/update-criteria/index">
+                        <i class="fas fa-cog me-1"></i> Setting Profile
+                    </a>
+                </li>
+                @endif
+
               @if (session('remember_token') == null)
               <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
                 <a class="btn btn-outline-light rounded-pill px-4 py-2 d-flex align-items-center justify-content-center" href="/login/index">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Criteria;
+use App\Models\CriteriaUser;
 use App\Models\Major;
 use App\Models\Question;
 use App\Models\School;
@@ -71,8 +72,13 @@ class ViewMiddlewareAdminWebController extends Controller
             $data_id_school[] = $school_recom_student["school_id"];
         }
 
-        $schools  = School::whereIn("id", $data_id_school)->get();
-        $criterias = Criteria::get();
+        $schools  = School::whereIn("id", $data_id_school)
+        ->with(['school_criteria_users' => function ($query) use ($student){
+            $query->where("user_id", $student["user_id"]);
+        }])
+        ->get();
+        $criteria_users = CriteriaUser::where("user_id", $student["user_id"])->get();
+        // $criterias = CriteriaUser::where("user_id", $student["user_id"])->get();
 
         $school_recom = SchoolRecomStudent::where("student_id", $id)->orderBy("value", "desc")->with(["school"])->get();
         $get_school_and_major_recom = School::where("id", $school_recom[0]["school_id"])
@@ -80,6 +86,8 @@ class ViewMiddlewareAdminWebController extends Controller
             $query->where("personality_type", $student["dimension_type"]);
         }])
         ->first();
-        return view('admin.test-result.detail', compact("student", "schools", "criterias", "school_recom", "get_school_and_major_recom"));
+
+
+        return view('admin.test-result.detail', compact("student", "schools", "criteria_users", "school_recom", "get_school_and_major_recom"));
     }
 }

@@ -23,10 +23,7 @@ class Major extends Model
         return $this->belongsTo(School::class);
     }
 
-    public function majorCharacteristics()
-    {
-        return $this->hasMany(MajorCharacteristic::class);
-    }
+
 
     public function profileMatchingResults()
     {
