@@ -132,7 +132,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $school->school_name }}</td>
                                     @foreach ($school->school_criteria_users as $school_criteria_user)
-                                        <td>{{ $school_criteria_user['gap'] }}</td>
+                                        <td>{{ abs($school_criteria_user['gap']) }}</td>
                                     @endforeach
 
                                 </tr>

@@ -20,8 +20,11 @@
                 <i class="fas fa-print"></i> Print
             </button>
 
+
+
             <!-- Konten yang akan dicetak -->
             <div id="printable-content">
+
                 <table class="table table-striped table-bordered" style="max-width: 80%">
                     <thead>
                         <tr class="text-center">
@@ -38,7 +41,7 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                @if (count($school_recom) > 1)
                 {{-- Tabel Kriteria Siswa --}}
                 <div class="table-responsive">
                     <h1 class="h2">Kriteria Siswa</h1>
@@ -112,7 +115,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $school->school_name }}</td>
                                     @foreach ($school->school_criteria_users as $school_criteria_user)
-                                        <td>{{ $school_criteria_user['gap'] }}</td>
+                                        <td>{{ abs($school_criteria_user['gap'])  }}</td>
                                     @endforeach
                                 </tr>
                             @endforeach
@@ -169,7 +172,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                @endif
                 <div class="card mt-4 mb-3" style="max-width: 400px">
                     <p style="max-width: 400px">Berdasarkan perhitungan tersebut, <b>{{ $student->user->name }}</b> cocok
                         di sekolah <b>{{ $get_school_and_major_recom['school_name'] }}</b> dengan jurusan

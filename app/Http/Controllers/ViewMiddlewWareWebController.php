@@ -21,11 +21,26 @@ class ViewMiddlewWareWebController extends Controller
         return view('home');
     }
 
+    public function criteriaUpdate(){
+        $check_student  = Student::where("user_id", session()->get("id"))->first();
+        $check_student["is_setting"] = 1;
+
+        $check_student->save();
+
+        return redirect("/");
+    }
+
     public function testMbtiIndex()
     {
         if (session()->get("remember_token") == null) {
             return redirect()->route('login.index');
         }
+        $check_student  = Student::where("user_id", session()->get("id"))->first();
+
+        if ($check_student["is_setting"] == 0 && $check_student["dimension_type"] == null) {
+            return redirect("/update-criteria/index");
+        }
+
 
         $questions = Question::get();
         return view('frontend.testmbti', compact('questions'));
@@ -153,19 +168,21 @@ class ViewMiddlewWareWebController extends Controller
         }
 
         $user_id = session()->get("id");
+
+
         $student = Student::where('user_id', $user_id)->with(["school_recom_students", "user"])->first();
         $majors = Major::where('personality_type', $student->dimension_type)->with(['school'])->get();
 
-        SchoolRecomStudent::where('student_id', $student->id)->delete();
 
+        SchoolRecomStudent::where('student_id', $student->id)->delete();
         foreach ($majors as $major) {
             $check = SchoolRecomStudent::where('student_id', $student->id)->where('school_id', $major->school_id)->first();
             if ($check) {
                 continue;
             }
             $school_criteria_users = SchoolCriteriaUser::where('school_id', $major->school_id)
-            ->where('user_id', $student->user_id)
-            ->with(['criteria_user'])->get();
+                ->where('user_id', $student->user_id)
+                ->with(['criteria_user'])->get();
 
             $value = 0;
             foreach ($school_criteria_users as $school_criteria) {
@@ -180,32 +197,32 @@ class ViewMiddlewWareWebController extends Controller
             ]);
         }
         $get_recomended = SchoolRecomStudent::where("student_id", $student["id"])
-        ->orderBy("value", "desc")->first();
+            ->orderBy("value", "desc")->first();
 
         $get_school_and_major_recom = School::where("id", $get_recomended["school_id"])
-        ->with(["majors" => function ($query) use ($student){
-            $query->where("personality_type", $student["dimension_type"]);
-        }])
-        ->first();
+            ->with(["majors" => function ($query) use ($student) {
+                $query->where("personality_type", $student["dimension_type"]);
+            }])
+            ->first();
 
 
-// tambahan
+        // tambahan
 
-$data_id_school = [];
+        $data_id_school = [];
+$student = Student::where('user_id', $user_id)->with(["school_recom_students", "user"])->first();
+        foreach ($student["school_recom_students"] as $school_recom_student) {
+            $data_id_school[] = $school_recom_student["school_id"];
+        }
 
-foreach ($student["school_recom_students"] as $school_recom_student) {
-    $data_id_school[] = $school_recom_student["school_id"];
-}
+        $schools  = School::whereIn("id", $data_id_school)
+            ->with(['school_criteria_users' => function ($query) use ($student) {
+                $query->where("user_id", $student["user_id"]);
+            }])
+            ->get();
+        $criteria_users = CriteriaUser::where("user_id", $student["user_id"])->get();
+        // $criterias = CriteriaUser::where("user_id", $student["user_id"])->get();
 
-$schools  = School::whereIn("id", $data_id_school)
-->with(['school_criteria_users' => function ($query) use ($student){
-    $query->where("user_id", $student["user_id"]);
-}])
-->get();
-$criteria_users = CriteriaUser::where("user_id", $student["user_id"])->get();
-// $criterias = CriteriaUser::where("user_id", $student["user_id"])->get();
-
-$school_recom = SchoolRecomStudent::where("student_id", $student["id"])->orderBy("value", "desc")->with(["school"])->get();
+        $school_recom = SchoolRecomStudent::where("student_id", $student["id"])->orderBy("value", "desc")->with(["school"])->get();
 
 
 

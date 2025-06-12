@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("school_name")->nullable()->index();
             $table->string("class_name")->nullable()->index();
             $table->string("dimension_type")->nullable()->index();
+            $table->boolean("is_setting")->default(0);
             $table->timestamps();
         });
     }

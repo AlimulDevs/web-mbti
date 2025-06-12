@@ -81,6 +81,7 @@ Route::prefix('admin')->group(function () {
 Route::get('/question/save', [ViewMiddlewWareWebController::class, 'questionSave'])->name('question.save.index');
 
 Route::get('/test-mbti/index', [ViewMiddlewWareWebController::class, 'testMbtiIndex'])->name('test-mbti.index');
+Route::get('/criteria-update', [ViewMiddlewWareWebController::class, 'criteriaUpdate'])->name('criteria-update');
 Route::get('/update-criteria/index', [ViewMiddlewWareWebController::class, 'updateCriteriaIndex'])->name('update-criteria.index');
 Route::get('/test-result/index', [ViewMiddlewWareWebController::class, 'testResultIndex'])->name('test-result.index');
 Route::post('/criteria-user/update', [CriteriaUserWebController::class, 'update'])->name('criteria-user.update');

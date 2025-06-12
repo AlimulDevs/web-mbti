@@ -43,8 +43,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <a href="/criteria-update" class="btn btn-primary float-end"><i class="fas fa-save me-2"></i>Save</a>
         </div>
+
     </div>
+
 
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
