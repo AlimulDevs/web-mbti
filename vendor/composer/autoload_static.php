@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit88970a0117c062eed55fa8728fc43833
+class ComposerStaticInit3689b68656d84ec3aff61227ff37c4e6
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -209,9 +209,9 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
         ),
         'Whoops\\' => 
         array (
@@ -603,13 +603,8 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
     );
 
     public static $classMap = array (
-        'App\\Actions\\ElaborateSummary' => __DIR__ . '/..' . '/laravel/pint/app/Actions/ElaborateSummary.php',
-        'App\\Actions\\FixCode' => __DIR__ . '/..' . '/laravel/pint/app/Actions/FixCode.php',
-        'App\\Commands\\DefaultCommand' => __DIR__ . '/..' . '/laravel/pint/app/Commands/DefaultCommand.php',
-        'App\\Contracts\\PathsRepository' => __DIR__ . '/..' . '/laravel/pint/app/Contracts/PathsRepository.php',
-        'App\\Exceptions\\HandleExceptions' => __DIR__ . '/..' . '/laravel/pint/app/Exceptions/HandleExceptions.php',
-        'App\\Factories\\ConfigurationFactory' => __DIR__ . '/..' . '/laravel/pint/app/Factories/ConfigurationFactory.php',
-        'App\\Factories\\ConfigurationResolverFactory' => __DIR__ . '/..' . '/laravel/pint/app/Factories/ConfigurationResolverFactory.php',
+        'App\\Http\\Controllers\\API\\DummyApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/DummyApiController.php',
+        'App\\Http\\Controllers\\AuthWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthWebController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -617,21 +612,34 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\CriteriaUserWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/CriteriaUserWebController.php',
+        'App\\Http\\Controllers\\CriteriaWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/CriteriaWebController.php',
+        'App\\Http\\Controllers\\DashboardWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardWebController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\MajorWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/MajorWebController.php',
+        'App\\Http\\Controllers\\QuestionWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuestionWebController.php',
+        'App\\Http\\Controllers\\SchoolCriteriaWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/SchoolCriteriaWebController.php',
+        'App\\Http\\Controllers\\SchoolWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/SchoolWebController.php',
         'App\\Http\\Controllers\\TestMbtiController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestMbtiController.php',
-        'App\\Kernel' => __DIR__ . '/..' . '/laravel/pint/app/Kernel.php',
+        'App\\Http\\Controllers\\ViewMiddlewWareWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/ViewMiddlewWareWebController.php',
+        'App\\Http\\Controllers\\ViewMiddlewareAdminWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/ViewMiddlewareAdminWebController.php',
+        'App\\Http\\Controllers\\ViewWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/ViewWebController.php',
+        'App\\Models\\Answer' => __DIR__ . '/../..' . '/app/Models/Answer.php',
+        'App\\Models\\Choice' => __DIR__ . '/../..' . '/app/Models/Choice.php',
+        'App\\Models\\Criteria' => __DIR__ . '/../..' . '/app/Models/Criteria.php',
+        'App\\Models\\CriteriaUser' => __DIR__ . '/../..' . '/app/Models/CriteriaUser.php',
+        'App\\Models\\Feedback' => __DIR__ . '/../..' . '/app/Models/Feedback.php',
+        'App\\Models\\Major' => __DIR__ . '/../..' . '/app/Models/Major.php',
+        'App\\Models\\MbtiResult' => __DIR__ . '/../..' . '/app/Models/MbtiResult.php',
+        'App\\Models\\ProfileMatchingResult' => __DIR__ . '/../..' . '/app/Models/ProfileMatchingResult.php',
+        'App\\Models\\Question' => __DIR__ . '/../..' . '/app/Models/Question.php',
+        'App\\Models\\School' => __DIR__ . '/../..' . '/app/Models/School.php',
+        'App\\Models\\SchoolCriteria' => __DIR__ . '/../..' . '/app/Models/SchoolCriteria.php',
+        'App\\Models\\SchoolCriteriaUser' => __DIR__ . '/../..' . '/app/Models/SchoolCriteriaUser.php',
+        'App\\Models\\SchoolRecomStudent' => __DIR__ . '/../..' . '/app/Models/SchoolRecomStudent.php',
+        'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
-        'App\\Output\\Concerns\\InteractsWithSymbols' => __DIR__ . '/..' . '/laravel/pint/app/Output/Concerns/InteractsWithSymbols.php',
-        'App\\Output\\ProgressOutput' => __DIR__ . '/..' . '/laravel/pint/app/Output/ProgressOutput.php',
-        'App\\Output\\SummaryOutput' => __DIR__ . '/..' . '/laravel/pint/app/Output/SummaryOutput.php',
-        'App\\Project' => __DIR__ . '/..' . '/laravel/pint/app/Project.php',
-        'App\\Providers\\ActionsServiceProvider' => __DIR__ . '/..' . '/laravel/pint/app/Providers/ActionsServiceProvider.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
-        'App\\Providers\\CommandsServiceProvider' => __DIR__ . '/..' . '/laravel/pint/app/Providers/CommandsServiceProvider.php',
-        'App\\Providers\\RepositoriesServiceProvider' => __DIR__ . '/..' . '/laravel/pint/app/Providers/RepositoriesServiceProvider.php',
-        'App\\Repositories\\ConfigurationJsonRepository' => __DIR__ . '/..' . '/laravel/pint/app/Repositories/ConfigurationJsonRepository.php',
-        'App\\Repositories\\GitPathsRepository' => __DIR__ . '/..' . '/laravel/pint/app/Repositories/GitPathsRepository.php',
-        'App\\ValueObjects\\Issue' => __DIR__ . '/..' . '/laravel/pint/app/ValueObjects/Issue.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
@@ -750,7 +758,18 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\AnswerSeeder' => __DIR__ . '/../..' . '/database/seeders/AnswerSeeder.php',
+        'Database\\Seeders\\ChoicesSeeder' => __DIR__ . '/../..' . '/database/seeders/ChoicesSeeder.php',
+        'Database\\Seeders\\CriteriasTableSeeder' => __DIR__ . '/../..' . '/database/seeders/CriteriasTableSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\FeedbackSeeder' => __DIR__ . '/../..' . '/database/seeders/FeedbackSeeder.php',
+        'Database\\Seeders\\MajorsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/MajorsTableSeeder.php',
+        'Database\\Seeders\\MbtiResultSeeder' => __DIR__ . '/../..' . '/database/seeders/MbtiResultSeeder.php',
+        'Database\\Seeders\\ProfileMatchingResultSeeder' => __DIR__ . '/../..' . '/database/seeders/ProfileMatchingResultSeeder.php',
+        'Database\\Seeders\\QuestionSeeder' => __DIR__ . '/../..' . '/database/seeders/QuestionSeeder.php',
+        'Database\\Seeders\\SchoolsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SchoolsTableSeeder.php',
+        'Database\\Seeders\\StudentTableSeeder' => __DIR__ . '/../..' . '/database/seeders/StudentTableSeeder.php',
+        'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -7103,7 +7122,6 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'Symfony\\Component\\String\\Inflector\\InflectorInterface' => __DIR__ . '/..' . '/symfony/string/Inflector/InflectorInterface.php',
         'Symfony\\Component\\String\\Inflector\\SpanishInflector' => __DIR__ . '/..' . '/symfony/string/Inflector/SpanishInflector.php',
         'Symfony\\Component\\String\\LazyString' => __DIR__ . '/..' . '/symfony/string/LazyString.php',
-        'Symfony\\Component\\String\\Resources\\WcswidthDataGenerator' => __DIR__ . '/..' . '/symfony/string/Resources/WcswidthDataGenerator.php',
         'Symfony\\Component\\String\\Slugger\\AsciiSlugger' => __DIR__ . '/..' . '/symfony/string/Slugger/AsciiSlugger.php',
         'Symfony\\Component\\String\\Slugger\\SluggerInterface' => __DIR__ . '/..' . '/symfony/string/Slugger/SluggerInterface.php',
         'Symfony\\Component\\String\\TruncateMode' => __DIR__ . '/..' . '/symfony/string/TruncateMode.php',
@@ -7556,9 +7574,9 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit88970a0117c062eed55fa8728fc43833::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit88970a0117c062eed55fa8728fc43833::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit88970a0117c062eed55fa8728fc43833::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3689b68656d84ec3aff61227ff37c4e6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3689b68656d84ec3aff61227ff37c4e6::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3689b68656d84ec3aff61227ff37c4e6::$classMap;
 
         }, null, ClassLoader::class);
     }
