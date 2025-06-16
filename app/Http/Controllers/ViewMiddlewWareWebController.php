@@ -27,7 +27,7 @@ class ViewMiddlewWareWebController extends Controller
 
         $check_student->save();
 
-        return redirect("/");
+        return redirect("/test-mbti/index");
     }
 
     public function testMbtiIndex()
@@ -148,7 +148,7 @@ class ViewMiddlewWareWebController extends Controller
         $student->dimension_type = $dimension_student;
         $student->save();
 
-        return redirect("/")->with("success", "berhasil melakukan test mbti");
+        return redirect("/test-result/index")->with("success", "berhasil melakukan test mbti");
     }
 
     public function updateCriteriaIndex()
@@ -224,7 +224,14 @@ $student = Student::where('user_id', $user_id)->with(["school_recom_students", "
 
         $school_recom = SchoolRecomStudent::where("student_id", $student["id"])->orderBy("value", "desc")->with(["school"])->get();
 
-
+        foreach ($school_recom as $key => $school) {
+            $school["ranking"] = $key + 1;
+            foreach ($majors as $major) {
+              if ($major["school_id"] == $school["school_id"]) {
+               $major["ranking"] = $school["ranking"];
+              }
+            }
+        }
 
 
         return view('frontend.testResult', compact('student', 'majors', 'get_school_and_major_recom', "schools", "criteria_users", "school_recom"));

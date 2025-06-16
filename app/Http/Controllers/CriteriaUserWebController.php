@@ -14,14 +14,14 @@ class CriteriaUserWebController extends Controller
         // Validasi input
         $validatedData = $request->validate([
             'profile' => 'required|integer',
-            'value' => 'required|numeric',
+            // 'value' => 'required|numeric',
         ]);
 
         // Cari kriteria dan update data
         $criteria = CriteriaUser::findOrFail($request->id);
         $criteria->update([
             'profile' => $validatedData['profile'],  // Profile Kriteria
-            'value' => $validatedData['value'],    // Nilai Bobot
+            // 'value' => $validatedData['value'],    // Nilai Bobot
         ]);
 
         // Redirect ke halaman index setelah update

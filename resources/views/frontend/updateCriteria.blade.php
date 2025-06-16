@@ -15,10 +15,10 @@
                 <thead>
                     <tr class="text-center">
                         <th>#</th>
-                        <th>Nama Kriteria</th>
-                        <th>Kode</th>
-                        <th>Profile</th>
-                        <th>Nilai Bobot</th>
+                        <th>Indikator Penilaian</th>
+                        {{-- <th>Kode</th> --}}
+                        <th>Harapan</th>
+                        {{-- <th>Nilai Bobot</th> --}}
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -27,9 +27,9 @@
                         <tr class="text-center">
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $criteria_user->criteria->name }}</td>
-                            <td>{{ $criteria_user->code }}</td>
+                            {{-- <td>{{ $criteria_user->code }}</td> --}}
                             <td>{{ $criteria_user->profile }}</td>
-                            <td>{{ $criteria_user->value }}</td>
+                            {{-- <td>{{ $criteria_user->value }}</td> --}}
                             <td>
                                 <!-- Tombol Edit -->
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{ $criteria_user->id }}" data-name="{{ $criteria_user->criteria->name }}" data-code="{{ $criteria_user->code }}" data-profile="{{ $criteria_user->profile }}" data-value="{{ $criteria_user->value }}">
@@ -62,7 +62,7 @@
                         <input type="hidden" id="id" name="id">
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Nama Kriteria</label>
+                            <label for="name" class="form-label">Indikator Penilaian</label>
                             <input type="text" class="form-control" id="name" name="name" disabled >
                         </div>
 
@@ -72,14 +72,14 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="profile" class="form-label">Profile</label>
+                            <label for="profile" class="form-label">Harapan</label>
                             <input type="number" class="form-control" id="profile" name="profile" required>
                         </div>
 
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="value" class="form-label">Nilai Bobot</label>
                             <input type="text" class="form-control" id="value" name="value" required>
-                        </div>
+                        </div> --}}
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

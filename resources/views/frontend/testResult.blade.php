@@ -31,6 +31,7 @@
                             <tr class="text-center">
                                 <th>Jurusan</th>
                                 <th>Sekolah</th>
+                                 <th>Perangkingan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +39,7 @@
                                 <tr class="text-center">
                                     <td>{{ $major->name }}</td>
                                     <td>{{ $major->school->school_name }}</td>
+                                    <td>{{ $major["ranking"] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

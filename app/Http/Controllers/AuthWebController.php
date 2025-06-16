@@ -45,7 +45,7 @@ class AuthWebController extends Controller
                             'user_id' => $data->id,  // ID Pengguna
                             'criteria_id' => $criteria->id,     // Nama Kriteria
                             'code' => $criteria->code,     // Kode Kriteria
-                            'profile' => $criteria->profile,  // Profile Kriteria
+                            'profile' => 0,  // Profile Kriteria
                             'value' => $criteria->value,    // Nilai Bobot
                         ]);
                     }
