@@ -37,9 +37,9 @@ class ViewMiddlewWareWebController extends Controller
         }
         $check_student  = Student::where("user_id", session()->get("id"))->first();
 
-        if ($check_student["is_setting"] == 0 && $check_student["dimension_type"] == null) {
-            return redirect("/update-criteria/index");
-        }
+        // if ($check_student["is_setting"] == 0 && $check_student["dimension_type"] == null) {
+        //     return redirect("/update-criteria/index");
+        // }
 
 
         $questions = Question::get();

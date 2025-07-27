@@ -33,11 +33,11 @@
                     </a>
                 </li>
                 @if (session('remember_token') != null)
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link fw-medium px-3" href="/update-criteria/index">
                         <i class="fas fa-cog me-1"></i> Setting Profile
                     </a>
-                </li>
+                </li> --}}
                 @endif
 
               @if (session('remember_token') == null)
