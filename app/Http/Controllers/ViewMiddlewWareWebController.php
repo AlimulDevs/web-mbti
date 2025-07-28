@@ -217,6 +217,8 @@ $student = Student::where('user_id', $user_id)->with(["school_recom_students", "
         $schools  = School::whereIn("id", $data_id_school)
             ->with(['school_criteria_users' => function ($query) use ($student) {
                 $query->where("user_id", $student["user_id"]);
+            },"majors" => function ($query) use ($student) {
+                $query->where("personality_type", $student["dimension_type"]);
             }])
             ->get();
         $criteria_users = CriteriaUser::where("user_id", $student["user_id"])->get();

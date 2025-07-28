@@ -31,7 +31,7 @@
                             <tr class="text-center">
                                 <th>Jurusan</th>
                                 <th>Sekolah</th>
-                                 <th>Perangkingan</th>
+                                 {{-- <th>Perangkingan</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -39,23 +39,25 @@
                                 <tr class="text-center">
                                     <td>{{ $major->name }}</td>
                                     <td>{{ $major->school->school_name }}</td>
-                                    <td>{{ $major["ranking"] }}</td>
+                                    {{-- <td>{{ $major["ranking"] }}</td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                     @if (count($school_recom) > 1)
-                        {{-- Tabel Kriteria Siswa --}}
-                        <div class="table-responsive">
+
+
+
+                        {{-- <div class="table-responsive">
                             <h1 class="h2">Kriteria Siswa</h1>
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Indikator Penilaian</th>
-                                        {{-- <th>Kode</th> --}}
+
                                         <th>Harapan</th>
-                                        {{-- <th>Nilai Bobot</th> --}}
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,23 +65,26 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $criteria_user->criteria->name }}</td>
-                                            {{-- <td>{{ $criteria_user->criteria->code }}</td> --}}
+
                                             <td>{{ $criteria_user->profile }}</td>
-                                            {{-- <td>{{ $criteria_user->value }}</td> --}}
+
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
+
+
 
                         {{-- Tabel Perhitungan --}}
                         <div class="table-responsive">
-                            <h1 class="h2">Perhitungan</h1>
+                            <h1 class="h2">Detail Point</h1>
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr class="text-center">
                                         <th>#</th>
                                         <th>Nama Sekolah</th>
+                                        <th>Nama Jurusan</th>
                                         @foreach ($criteria_users as $criteria_user)
                                             <th>{{ $criteria_user->criteria->name }}</th>
                                         @endforeach
@@ -90,6 +95,11 @@
                                         <tr class="text-center">
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $school->school_name }}</td>
+                                            <td>
+                                                @foreach ($school->majors as $major )
+                                                    {{ $major["name"] }} ,
+                                                @endforeach
+                                            </td>
                                             @foreach ($school->school_criteria_users as $school_criteria_user)
                                                 <td>{{ $school_criteria_user->value }}</td>
                                             @endforeach
@@ -100,7 +110,7 @@
                         </div>
 
                         {{-- Tabel GAP --}}
-                        <div class="table-responsive">
+                        {{-- <div class="table-responsive">
                             <h1 class="h2">Menghitung Nilai GAP antara profile</h1>
                             <table class="table table-striped table-bordered">
                                 <thead>
@@ -124,7 +134,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
 
                         {{-- Tabel Mapping --}}
                         <div class="table-responsive">
