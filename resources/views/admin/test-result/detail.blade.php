@@ -8,12 +8,12 @@
 
 
 
-            <!-- Main Content -->
+
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Kriteria Siswa</h1>
-                    <!-- Dropdown for user profile -->
+
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="dropdown">
                             <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
@@ -43,8 +43,8 @@
                     </div>
                 </div>
 
-                {{-- Tabel Sekolah --}}
-                <div class="table-responsive">
+
+                {{-- <div class="table-responsive">
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -69,11 +69,8 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-
-            </main>
-            <!-- Main Content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                </div> --}}
+<main class="">
 
 
                 {{-- Tabel Sekolah --}}
@@ -105,15 +102,15 @@
                 </div>
 
             </main>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+            {{-- <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Menghitung Nilai GAP antara profile</h1>
-                    <!-- Dropdown for user profile -->
+
 
                 </div>
 
-                {{-- Tabel Sekolah --}}
+
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -142,16 +139,18 @@
                 </div>
 
 
-            </main>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            </main> --}}
+
+
+            {{-- <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Menghitung Nilai Mapping </h1>
-                    <!-- Dropdown for user profile -->
+
 
                 </div>
 
-                {{-- Tabel Sekolah --}}
+
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -180,8 +179,8 @@
                 </div>
 
 
-            </main>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            </main> --}}
+            <main class="">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Hasil Perhitungan </h1>
@@ -224,6 +223,9 @@
                 </div>
 
             </main>
+            </main>
+            <!-- Main Content -->
+
         </div>
     </div>
 

@@ -137,7 +137,7 @@
                         </div> --}}
 
                         {{-- Tabel Mapping --}}
-                        <div class="table-responsive">
+                        {{-- <div class="table-responsive">
                             <h1 class="h2">Menghitung Nilai Mapping</h1>
                             <table class="table table-striped table-bordered">
                                 <thead>
@@ -161,7 +161,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
 
                         {{-- Hasil Perhitungan --}}
                         <div class="table-responsive">
