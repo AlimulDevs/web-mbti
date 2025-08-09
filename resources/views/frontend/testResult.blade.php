@@ -17,9 +17,9 @@
                 </div>
 
                 <!-- Tombol Print -->
-                <button class="btn btn-primary mb-3" onclick="printPage()">
+                <a class="btn btn-primary mb-3"  href="/test-result/print" target="_blank">
                     <i class="fas fa-print"></i> Print
-                </button>
+                </a>
 
 
 
@@ -109,61 +109,7 @@
                             </table>
                         </div>
 
-                        {{-- Tabel GAP --}}
-                        {{-- <div class="table-responsive">
-                            <h1 class="h2">Menghitung Nilai GAP antara profile</h1>
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>#</th>
-                                        <th>Nama Sekolah</th>
-                                        @foreach ($criteria_users as $criteria_user)
-                                            <th>{{ $criteria_user->criteria->name }}</th>
-                                        @endforeach
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($schools as $key => $school)
-                                        <tr class="text-center">
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $school->school_name }}</td>
-                                            @foreach ($school->school_criteria_users as $school_criteria_user)
-                                                <td>{{ abs($school_criteria_user['gap']) }}</td>
-                                            @endforeach
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div> --}}
 
-                        {{-- Tabel Mapping --}}
-                        {{-- <div class="table-responsive">
-                            <h1 class="h2">Menghitung Nilai Mapping</h1>
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>#</th>
-                                        <th>Nama Sekolah</th>
-                                        @foreach ($criteria_users as $criteria_user)
-                                            <th>{{ $criteria_user->criteria->name }}</th>
-                                        @endforeach
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($schools as $key => $school)
-                                        <tr class="text-center">
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $school->school_name }}</td>
-                                            @foreach ($school->school_criteria_users as $school_criteria_user)
-                                                <td>{{ $school_criteria_user['gap_mapping'] }}</td>
-                                            @endforeach
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div> --}}
-
-                        {{-- Hasil Perhitungan --}}
                         <div class="table-responsive">
                             <h1 class="h2">Hasil Perhitungan</h1>
                             <table class="table table-striped table-bordered">
@@ -211,22 +157,7 @@
     </div>
 
     <script>
-        function printPage() {
-            // Ambil elemen dengan id 'printable-content'
-            var content = document.getElementById('printable-content').innerHTML;
 
-            // Buka jendela baru untuk mencetak
-            var printWindow = window.open('', '', 'height=600,width=800');
-
-            // Set konten untuk jendela print
-            printWindow.document.write('<html><head><title>Print</title></head><body>');
-            printWindow.document.write(content);
-            printWindow.document.write('</body></html>');
-
-            // Tunggu hingga konten siap, lalu cetak
-            printWindow.document.close();
-            printWindow.print();
-        }
     </script>
 
 @endsection

@@ -21,7 +21,8 @@ class ViewMiddlewWareWebController extends Controller
         return view('home');
     }
 
-    public function criteriaUpdate(){
+    public function criteriaUpdate()
+    {
         $check_student  = Student::where("user_id", session()->get("id"))->first();
         $check_student["is_setting"] = 1;
 
@@ -186,6 +187,84 @@ class ViewMiddlewWareWebController extends Controller
 
             $value = 0;
             foreach ($school_criteria_users as $school_criteria) {
+                // $count = $school_criteria["gap_mapping"] * $school_criteria["criteria_user"]["value"];
+                // $value = $value + $count;
+                $value = $value + $school_criteria["value"];
+            }
+
+            SchoolRecomStudent::create([
+                'student_id' => $student->id,
+                'school_id' => $major->school_id,
+                'value' => $value
+            ]);
+        }
+        $get_recomended = SchoolRecomStudent::where("student_id", $student["id"])
+            ->orderBy("value", "desc")->first();
+
+        $get_school_and_major_recom = School::where("id", $get_recomended["school_id"])
+            ->with(["majors" => function ($query) use ($student) {
+                $query->where("personality_type", $student["dimension_type"]);
+            }])
+            ->first();
+
+
+        // tambahan
+
+        $data_id_school = [];
+        $student = Student::where('user_id', $user_id)->with(["school_recom_students", "user"])->first();
+        foreach ($student["school_recom_students"] as $school_recom_student) {
+            $data_id_school[] = $school_recom_student["school_id"];
+        }
+
+        $schools  = School::whereIn("id", $data_id_school)
+            ->with(['school_criteria_users' => function ($query) use ($student) {
+                $query->where("user_id", $student["user_id"]);
+            }, "majors" => function ($query) use ($student) {
+                $query->where("personality_type", $student["dimension_type"]);
+            }])
+            ->get();
+        $criteria_users = CriteriaUser::where("user_id", $student["user_id"])->get();
+        // $criterias = CriteriaUser::where("user_id", $student["user_id"])->get();
+
+        $school_recom = SchoolRecomStudent::where("student_id", $student["id"])->orderBy("value", "desc")->with(["school"])->get();
+
+        foreach ($school_recom as $key => $school) {
+            $school["ranking"] = $key + 1;
+            foreach ($majors as $major) {
+                if ($major["school_id"] == $school["school_id"]) {
+                    $major["ranking"] = $school["ranking"];
+                }
+            }
+        }
+
+
+        return view('frontend.testResult', compact('student', 'majors', 'get_school_and_major_recom', "schools", "criteria_users", "school_recom"));
+    }
+    public function testResultPrint()
+    {
+        if (session()->get("remember_token") == null) {
+            return redirect("/login/index");
+        }
+
+        $user_id = session()->get("id");
+
+
+        $student = Student::where('user_id', $user_id)->with(["school_recom_students", "user"])->first();
+        $majors = Major::where('personality_type', $student->dimension_type)->with(['school'])->get();
+
+
+        SchoolRecomStudent::where('student_id', $student->id)->delete();
+        foreach ($majors as $major) {
+            $check = SchoolRecomStudent::where('student_id', $student->id)->where('school_id', $major->school_id)->first();
+            if ($check) {
+                continue;
+            }
+            $school_criteria_users = SchoolCriteriaUser::where('school_id', $major->school_id)
+                ->where('user_id', $student->user_id)
+                ->with(['criteria_user'])->get();
+
+            $value = 0;
+            foreach ($school_criteria_users as $school_criteria) {
                 $count = $school_criteria["gap_mapping"] * $school_criteria["criteria_user"]["value"];
                 $value = $value + $count;
             }
@@ -209,7 +288,7 @@ class ViewMiddlewWareWebController extends Controller
         // tambahan
 
         $data_id_school = [];
-$student = Student::where('user_id', $user_id)->with(["school_recom_students", "user"])->first();
+        $student = Student::where('user_id', $user_id)->with(["school_recom_students", "user"])->first();
         foreach ($student["school_recom_students"] as $school_recom_student) {
             $data_id_school[] = $school_recom_student["school_id"];
         }
@@ -217,7 +296,7 @@ $student = Student::where('user_id', $user_id)->with(["school_recom_students", "
         $schools  = School::whereIn("id", $data_id_school)
             ->with(['school_criteria_users' => function ($query) use ($student) {
                 $query->where("user_id", $student["user_id"]);
-            },"majors" => function ($query) use ($student) {
+            }, "majors" => function ($query) use ($student) {
                 $query->where("personality_type", $student["dimension_type"]);
             }])
             ->get();
@@ -229,13 +308,13 @@ $student = Student::where('user_id', $user_id)->with(["school_recom_students", "
         foreach ($school_recom as $key => $school) {
             $school["ranking"] = $key + 1;
             foreach ($majors as $major) {
-              if ($major["school_id"] == $school["school_id"]) {
-               $major["ranking"] = $school["ranking"];
-              }
+                if ($major["school_id"] == $school["school_id"]) {
+                    $major["ranking"] = $school["ranking"];
+                }
             }
         }
 
 
-        return view('frontend.testResult', compact('student', 'majors', 'get_school_and_major_recom', "schools", "criteria_users", "school_recom"));
+        return view('frontend.testResultPrint', compact('student', 'majors', 'get_school_and_major_recom', "schools", "criteria_users", "school_recom"));
     }
 }
