@@ -124,7 +124,7 @@
                                     @foreach ($school_recom as $key => $recom)
                                         <tr class="text-center">
                                             <td>{{ $recom->school->school_name }}</td>
-                                            <td>{{ $recom->value }}</td>
+                                          <td>{{ round($recom->value) }}</td>
                                             <td>{{ $key + 1 }}</td>
                                         </tr>
                                     @endforeach
